@@ -1,0 +1,69 @@
+import java.awt.*;
+import java.awt.event.*;
+public class Choice1 {
+
+    public static void main(String[] args) {
+       Frame frame = new Frame("My Pet");
+        frame.setLayout(null);
+        frame.setSize(350, 200);
+
+        Label petlbl = new Label("Pet's Name:");
+       petlbl.setBounds(50, 30, 80, 25);
+
+        TextField petf = new TextField();
+        petf.setName("petNameTextField");
+       petf.setBounds(140, 30, 150, 25);
+
+        Label pet1lbl = new Label("Pet's Type:");
+        pet1lbl.setBounds(50, 70, 80, 25);
+
+        Choice petc = new Choice();
+        petc.setName("petTypeChoice");
+        petc.add("Dog");
+        petc.add("Cat");
+        petc.add("Rabbit");
+        petc.add("Parrot");
+        petc.setBounds(140, 70, 150, 25);
+
+        Label dlbl = new Label();
+        dlbl.setName("displayLabel");
+        dlbl.setBounds(50, 140, 280, 25);
+        
+        Font f=new Font("Arial", Font.BOLD, 12);
+        dlbl.setFont(f);
+        
+        Button gbut = new Button("Generate");
+        gbut.setName("generateTextButton");
+        gbut.setBounds(100, 100, 120, 25);
+        gbut.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String petName = petf.getText();
+                String petType = petc.getSelectedItem().toLowerCase();
+                dlbl.setText("The pet is a " + petType + " named " + petName);
+            }
+        });
+
+
+        frame.addWindowListener(new WindowListener() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+            public void windowOpened(WindowEvent e) {}
+            public void windowClosed(WindowEvent e) {}
+            public void windowIconified(WindowEvent e) {}
+            public void windowDeiconified(WindowEvent e) {}
+            public void windowActivated(WindowEvent e) {}
+            public void windowDeactivated(WindowEvent e) {}
+        });
+
+
+        frame.add(petlbl);
+        frame.add(petf);
+        frame.add(pet1lbl);
+        frame.add(petc);
+        frame.add(dlbl);
+        frame.add(gbut);
+
+        frame.setVisible(true);
+    }
+}
